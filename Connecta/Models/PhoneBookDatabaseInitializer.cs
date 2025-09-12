@@ -9,28 +9,80 @@ namespace Connecta.Models
     {
         protected override void Seed(PhoneBookContext context)
         {
-            // ایجاد کاربر ادمین پیش‌فرض
-            var adminUser = new User
+            // در متد Seed
+            // ایجاد کاربران نمونه با شماره تلفن
+            var sampleUsers = new[]
             {
-                Username = "admin",
-                Password = "admin123", // در عمل باید هش شود
-                Email = "admin@phonebook.com",
-                IsAdmin = true,
-                ContactLimit = 1000
-            };
+    new User
+    {
+        Username = "admin",
+        Password = "admin123",
+        Email = "admin@phonebook.com",
+        PhoneNumber = "09123456789",
+        FirstName = "مدیر",
+        LastName = "سیستم",
+        IsAdmin = true,
+        ContactLimit = 1000
+    },
+    new User
+    {
+        Username = "user1",
+        Password = "user123",
+        Email = "user1@phonebook.com",
+        PhoneNumber = "09129876543",
+        FirstName = "کاربر",
+        LastName = "یک",
+        IsAdmin = false,
+        ContactLimit = 10
+    },
+    new User
+    {
+        Username = "user2",
+        Password = "user123",
+        Email = "user2@phonebook.com",
+        PhoneNumber = "09351234567",
+        FirstName = "کاربر",
+        LastName = "دو",
+        IsAdmin = false,
+        ContactLimit = 10
+    }
+};
 
-            // ایجاد کاربر معمولی پیش‌فرض
-            var regularUser = new User
+            foreach (var user in sampleUsers)
             {
-                Username = "user",
-                Password = "user123", // در عمل باید هش شود
-                Email = "user@phonebook.com",
-                IsAdmin = false,
-                ContactLimit = 10
-            };
+                context.Users.Add(user);
+            }
 
-            context.Users.Add(adminUser);
-            context.Users.Add(regularUser);
+            // ایجاد مخاطبین نمونه
+            var sampleContacts = new[]
+            {
+    new Contact {
+        FirstName = "علی",
+        LastName = "رضایی",
+        PhoneNumber = "09111111111",
+        Email = "ali@example.com",
+        UserId = 2
+    },
+    new Contact {
+        FirstName = "مریم",
+        LastName = "محمدی",
+        PhoneNumber = "09222222222",
+        Email = "maryam@example.com",
+        UserId = 2
+    },
+    new Contact {
+        FirstName = "رضا",
+        LastName = "حسینی",
+        PhoneNumber = "09333333333",
+        Email = "reza@example.com",
+        UserId = 3
+    }
+};
+
+            foreach (var contact in sampleContacts)
+            {
+                context.Contacts.Add(contact);
+            }
 
             // ایجاد طرح‌های پیش‌فرض
             var basicPlan = new Plan

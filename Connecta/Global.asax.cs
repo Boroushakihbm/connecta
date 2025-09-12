@@ -17,10 +17,10 @@ namespace Connecta
             // Start the application
             //RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            // این خط باعث می‌شود مایگریشن‌ها اجرا شوند و سپس Seed اجرا شود.
+            //// این خط باعث می‌شود مایگریشن‌ها اجرا شوند و سپس Seed اجرا شود.
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<PhoneBookContext, Configuration>());
 
-            // Force initialization so we can see errors now
+            ////Force initialization so we can see errors now
             //using (var ctx = new PhoneBookContext())
             //{
             //    ctx.Database.Initialize(false);

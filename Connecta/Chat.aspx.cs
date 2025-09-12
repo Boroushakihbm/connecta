@@ -15,57 +15,50 @@ namespace Connecta
             {
                 Response.Redirect("~/Login.aspx");
             }
-
-            if (!IsPostBack)
-            {
-                LoadContacts();
-            }
-        }
-
-        private void LoadContacts()
-        {
-            int userId = (int)Session["UserId"];
-
-            using (var context = new PhoneBookContext())
-            {
-                var contacts = context.Contacts.Where(c => c.UserId == userId).ToList();
-                lstContacts.DataSource = contacts;
-                lstContacts.DataTextField = "FullName";
-                lstContacts.DataValueField = "Id";
-                lstContacts.DataBind();
-            }
-        }
-
-        protected void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lstContacts.SelectedItem != null)
-            {
-                int contactId = int.Parse(lstContacts.SelectedValue);
-                string contactName = lstContacts.SelectedItem.Text;
-
-                // ثبت در session برای دسترسی از JavaScript
-                Session["SelectedContactId"] = contactId;
-                Session["SelectedContactName"] = contactName;
-            }
-        }
-
-        protected void btnSend_Click(object sender, EventArgs e)
-        {
-            // ارسال پیام از طریق SignalR انجام می‌شود
-            // این متد برای پست‌بک سنتی نگه داشته شده است
         }
 
         [WebMethod]
-        public static List<MessageInfo> GetChatHistory(int contactId)
+        public static List<UserContactInfo> GetUserContacts()
         {
-            var messages = new List<MessageInfo>();
+            var contacts = new List<UserContactInfo>();
             var userId = int.Parse(System.Web.HttpContext.Current.Session["UserId"].ToString());
 
             using (var context = new PhoneBookContext())
             {
+                var userContacts = context.UserContacts
+                    .Where(uc => uc.UserId == userId && !uc.IsBlocked)
+                    .Join(context.Users,
+                          uc => uc.ContactUserId,
+                          u => u.Id,
+                          (uc, u) => new { UserContact = uc, User = u })
+                    .ToList();
+
+                foreach (var item in userContacts)
+                {
+                    contacts.Add(new UserContactInfo
+                    {
+                        Id = item.User.Id,
+                        Username = item.User.Username,
+                        Nickname = item.UserContact.Nickname,
+                        IsOnline = item.User.IsOnline
+                    });
+                }
+            }
+
+            return contacts;
+        }
+
+        [WebMethod]
+        public static List<MessageInfo> GetChatHistory(int userId)
+        {
+            var messages = new List<MessageInfo>();
+            var currentUserId = int.Parse(System.Web.HttpContext.Current.Session["UserId"].ToString());
+
+            using (var context = new PhoneBookContext())
+            {
                 var chatHistory = context.Messages
-                    .Where(m => (m.SenderId == userId && m.ReceiverId == contactId) ||
-                                (m.SenderId == contactId && m.ReceiverId == userId))
+                    .Where(m => (m.SenderId == currentUserId && m.ReceiverId == userId) ||
+                                (m.SenderId == userId && m.ReceiverId == currentUserId))
                     .OrderBy(m => m.Timestamp)
                     .ToList();
 
@@ -85,6 +78,24 @@ namespace Connecta
 
             return messages;
         }
+
+        [WebMethod]
+        public static bool GetUserStatus(int userId)
+        {
+            using (var context = new PhoneBookContext())
+            {
+                var user = context.Users.Find(userId);
+                return user?.IsOnline ?? false;
+            }
+        }
+    }
+
+    public class UserContactInfo
+    {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Nickname { get; set; }
+        public bool IsOnline { get; set; }
     }
 
     public class MessageInfo
@@ -96,5 +107,4 @@ namespace Connecta
         public DateTime Timestamp { get; set; }
         public bool IsRead { get; set; }
     }
-
 }

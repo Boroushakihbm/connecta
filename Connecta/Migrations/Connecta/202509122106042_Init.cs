@@ -31,8 +31,14 @@
                         Username = c.String(nullable: false, maxLength: 50),
                         Password = c.String(nullable: false, maxLength: 100),
                         Email = c.String(nullable: false),
+                        PhoneNumber = c.String(nullable: false),
+                        FirstName = c.String(maxLength: 50),
+                        LastName = c.String(maxLength: 50),
                         IsAdmin = c.Boolean(nullable: false),
                         ContactLimit = c.Int(nullable: false),
+                        IsOnline = c.Boolean(nullable: false),
+                        LastSeen = c.DateTime(nullable: false),
+                        RegisteredDate = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -46,6 +52,7 @@
                         SenderId = c.Int(nullable: false),
                         ReceiverId = c.Int(nullable: false),
                         IsRead = c.Boolean(nullable: false),
+                        MessageType = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Users", t => t.ReceiverId)
@@ -54,19 +61,21 @@
                 .Index(t => t.ReceiverId);
             
             CreateTable(
-                "dbo.UserPlans",
+                "dbo.UserContacts",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Price = c.Int(nullable: false),
-                        ContactLimit = c.Int(nullable: false),
-                        User_Id = c.Int(),
+                        UserId = c.Int(nullable: false),
+                        ContactUserId = c.Int(nullable: false),
+                        Nickname = c.String(),
+                        AddedDate = c.DateTime(nullable: false),
+                        IsBlocked = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.User_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.Users", t => t.ContactUserId)
+                .ForeignKey("dbo.Users", t => t.UserId)
+                .Index(t => t.UserId)
+                .Index(t => t.ContactUserId);
             
             CreateTable(
                 "dbo.Plans",
@@ -81,20 +90,35 @@
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.UserPlans",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
+                        Price = c.Int(nullable: false),
+                        ContactLimit = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.UserPlans", "User_Id", "dbo.Users");
+            DropForeignKey("dbo.UserContacts", "UserId", "dbo.Users");
+            DropForeignKey("dbo.UserContacts", "ContactUserId", "dbo.Users");
             DropForeignKey("dbo.Messages", "SenderId", "dbo.Users");
             DropForeignKey("dbo.Messages", "ReceiverId", "dbo.Users");
             DropForeignKey("dbo.Contacts", "UserId", "dbo.Users");
-            DropIndex("dbo.UserPlans", new[] { "User_Id" });
+            DropIndex("dbo.UserContacts", new[] { "ContactUserId" });
+            DropIndex("dbo.UserContacts", new[] { "UserId" });
             DropIndex("dbo.Messages", new[] { "ReceiverId" });
             DropIndex("dbo.Messages", new[] { "SenderId" });
             DropIndex("dbo.Contacts", new[] { "UserId" });
-            DropTable("dbo.Plans");
             DropTable("dbo.UserPlans");
+            DropTable("dbo.Plans");
+            DropTable("dbo.UserContacts");
             DropTable("dbo.Messages");
             DropTable("dbo.Users");
             DropTable("dbo.Contacts");

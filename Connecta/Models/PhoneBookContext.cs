@@ -11,14 +11,26 @@ namespace Connecta.Models
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // رابطه Sender
+            // تنظیمات رابطه برای UserContact
+            modelBuilder.Entity<UserContact>()
+                .HasRequired(uc => uc.User)
+                .WithMany(u => u.UserContacts)
+                .HasForeignKey(uc => uc.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<UserContact>()
+                .HasRequired(uc => uc.ContactUser)
+                .WithMany()
+                .HasForeignKey(uc => uc.ContactUserId)
+                .WillCascadeOnDelete(false);
+
+            // تنظیمات رابطه برای Message
             modelBuilder.Entity<Message>()
                 .HasRequired(m => m.Sender)
                 .WithMany(u => u.SentMessages)
                 .HasForeignKey(m => m.SenderId)
                 .WillCascadeOnDelete(false);
 
-            // رابطه Receiver
             modelBuilder.Entity<Message>()
                 .HasRequired(m => m.Receiver)
                 .WithMany(u => u.ReceivedMessages)
@@ -34,5 +46,7 @@ namespace Connecta.Models
         public DbSet<Plan> Plans { get; set; }
         public DbSet<UserPlan> UserPlans { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<UserContact> UserContacts { get; set; }
+
     }
 }

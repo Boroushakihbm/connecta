@@ -255,6 +255,7 @@
     <Content Include="Login.aspx" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Readme.txt" />
+    <Content Include="Register.aspx" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.signalR-2.4.3.js" />
@@ -294,9 +295,9 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Connecta\202509121628487_Init.cs" />
-    <Compile Include="Migrations\Connecta\202509121628487_Init.Designer.cs">
-      <DependentUpon>202509121628487_Init.cs</DependentUpon>
+    <Compile Include="Migrations\Connecta\202509122106042_Init.cs" />
+    <Compile Include="Migrations\Connecta\202509122106042_Init.Designer.cs">
+      <DependentUpon>202509122106042_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Connecta\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -305,8 +306,16 @@
     <Compile Include="Models\PhoneBookDatabaseInitializer.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserContact.cs" />
     <Compile Include="Models\UserPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -330,8 +339,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Connecta\202509121628487_Init.resx">
-      <DependentUpon>202509121628487_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Connecta\202509122106042_Init.resx">
+      <DependentUpon>202509122106042_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

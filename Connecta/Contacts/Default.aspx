@@ -12,13 +12,30 @@
                 </div>
             </div>
             <div class="col-md-6 text-end">
-                <asp:Button ID="btnAddContact" runat="server" Text="افزودن مخاطب جدید" CssClass="btn btn-primary" 
-                    OnClientClick="openAddModal()" />
-                <input type="button" class="btn btn-primary" value="افزودن مخاطب" onclick="openAddModal()" />
+                <input type="button" class="btn btn-primary" value="افزودن مخاطب جدید" onclick="openAddModal()" />
 
             </div>
         </div>
-        
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>جستجوی کاربران سیستم</h5>
+            </div>
+            <div class="card-body">
+                <div class="input-group">
+                    <asp:TextBox ID="txtSearchPhone" runat="server" CssClass="form-control" placeholder="شماره تلفن کاربر"></asp:TextBox>
+                    <asp:Button ID="btnSearchPhone" runat="server" Text="جستجو" CssClass="btn btn-outline-primary" OnClick="btnSearchPhone_Click" />
+                </div>
+                <div id="searchResults" class="mt-3">
+                    <!-- نتایج جستجو在这里 نمایش داده می‌شود -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
         <div class="alert alert-info" runat="server" id="limitAlert" visible="false">
             شما <asp:Literal ID="litContactCount" runat="server"></asp:Literal> از 
             <asp:Literal ID="litContactLimit" runat="server"></asp:Literal> مخاطب مجاز را استفاده کرده‌اید.

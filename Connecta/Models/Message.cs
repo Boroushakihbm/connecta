@@ -22,5 +22,15 @@ namespace Connecta.Models
         public virtual User Receiver { get; set; }
 
         public bool IsRead { get; set; }
+
+        public MessageType MessageType { get; set; } = MessageType.Text;
     }
+
+    public enum MessageType
+    {
+        Text,
+        Image,
+        File
+    }
+
 }

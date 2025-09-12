@@ -53,14 +53,14 @@ namespace Connecta.Contacts
                 if (contactCount >= contactLimit)
                 {
                     limitAlert.Visible = true;
-                    btnAddContact.Enabled = false;
-                    btnAddContact.CssClass = "btn btn-secondary";
+                    //btnAddContact.Enabled = false;
+                    //btnAddContact.CssClass = "btn btn-secondary";
                 }
                 else
                 {
                     limitAlert.Visible = false;
-                    btnAddContact.Enabled = true;
-                    btnAddContact.CssClass = "btn btn-primary";
+                    //btnAddContact.Enabled = true;
+                    //btnAddContact.CssClass = "btn btn-primary";
                 }
             }
         }
@@ -200,6 +200,44 @@ namespace Connecta.Contacts
 
             BindContacts();
             CheckContactLimit();
+        }
+        // در Default.aspx.cs
+        protected void btnSearchPhone_Click(object sender, EventArgs e)
+        {
+            string phoneNumber = txtSearchPhone.Text.Trim();
+
+            using (var context = new PhoneBookContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumber && u.Id != (int)Session["UserId"]);
+
+                if (user != null)
+                {
+                    // بررسی آیا قبلاً اضافه شده
+                    bool alreadyAdded = context.UserContacts
+                        .Any(uc => uc.UserId == (int)Session["UserId"] && uc.ContactUserId == user.Id);
+
+                    string resultHtml = $@"
+                <div class='alert alert-info'>
+                    <h5>نتایج جستجو</h5>
+                    <p><strong>نام:</strong> {user.FullName}</p>
+                    <p><strong>نام کاربری:</strong> {user.Username}</p>
+                    <p><strong>وضعیت:</strong> {(user.IsOnline ? "آنلاین" : "آفلاین")}</p>
+                    {(alreadyAdded ?
+                                "<div class='text-success'>این کاربر قبلاً به لیست چت شما اضافه شده است</div>" :
+                                $"<button class='btn btn-success mt-2' onclick='addToChatContacts({user.Id})'>افزودن به لیست چت</button>")}
+                </div>";
+
+                    // ثبت در ViewState برای دسترسی از JavaScript
+                    ViewState["FoundUserId"] = user.Id;
+                    ViewState["FoundUserName"] = user.FullName;
+
+                   // searchResults.InnerHtml = resultHtml;
+                }
+                else
+                {
+                    //searchResults.InnerHtml = "<div class='alert alert-warning'>کاربری با این شماره تلفن در سیستم یافت نشد</div>";
+                }
+            }
         }
     }
 
