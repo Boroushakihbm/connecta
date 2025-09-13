@@ -45,7 +45,7 @@
                         <h5>آمار کاربران</h5>
                     </div>
                     <div class="card-body">
-                        <canvas id="usersChart" width="400" height="200"></canvas>
+                        <canvas id="usersChart" width="100%" height="38vh"></canvas>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,12 @@
                         <h5>آخرین کاربران ثبت‌نام شده</h5>
                     </div>
                     <div class="card-body">
-                        <asp:GridView ID="gvRecentUsers" runat="server" CssClass="table table-sm" AutoGenerateColumns="True"></asp:GridView>
+                        <asp:GridView ID="gvRecentUsers" runat="server" CssClass="table table-striped" AutoGenerateColumns="False">
+                            <Columns>
+                                <asp:BoundField DataField="Username" HeaderText="نام کاربری" ReadOnly="true" />
+                                <asp:BoundField DataField="Email" HeaderText="ایمیل" />
+                            </Columns>
+                        </asp:GridView>
                     </div>
                 </div>
             </div>

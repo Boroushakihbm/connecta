@@ -13,7 +13,7 @@ namespace Connecta
         {
             if (Session["UserId"] == null)
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/UserPages/Login.aspx");
             }
         }
 

@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Connecta.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Connecta.UserPages.Register" %>
 
 <!DOCTYPE html>
 <html dir="rtl">
 <head>
     <title>ثبت‌نام در سیستم</title>
-    <link href="Content/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="../Content/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="../Content/css/connecta.css" rel="stylesheet" />
     <style>
         body { 
             background-color: #f5f5f5; 
@@ -24,7 +25,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="register-container">
-            <h2 class="text-center mb-4">ثبت‌نام در سیستم دفتر تلفن</h2>
+            <h2 class="text-center mb-4">ثبت‌نام در سیستم کانکتا</h2>
             
             <div class="mb-3">
                 <label for="txtUsername" class="form-label">نام کاربری *</label>
@@ -69,6 +70,7 @@
         </div>
     </form>
     
-    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="../Content/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

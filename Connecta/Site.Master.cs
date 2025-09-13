@@ -12,9 +12,9 @@ namespace Connecta
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["Username"] == null && !Request.Path.EndsWith("Login.aspx"))
+            if (Session["Username"] == null && !Request.Path.EndsWith("UserPages/Login.aspx"))
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/UserPages/Login.aspx");
             }
         }
         protected void btnLogout_Click(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace Connecta
             FormsAuthentication.SignOut();
             Session.Clear();
             Session.Abandon();
-            Response.Redirect("~/Login.aspx");
+            Response.Redirect("~/UserPages/Login.aspx");
         }
     }
 }

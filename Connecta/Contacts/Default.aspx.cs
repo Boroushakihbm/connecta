@@ -18,7 +18,7 @@ namespace Connecta.Contacts
             {
                 if (Session["UserId"] == null)
                 {
-                    Response.Redirect("~/Login.aspx");
+                    Response.Redirect("~/UserPages/Login.aspx");
                 }
 
                 BindContacts();
@@ -208,13 +208,14 @@ namespace Connecta.Contacts
 
             using (var context = new PhoneBookContext())
             {
-                var user = context.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumber && u.Id != (int)Session["UserId"]);
+                int currentUserId = (int)Session["UserId"];
+                var user = context.Users.FirstOrDefault(u => u.PhoneNumber == phoneNumber && u.Id != currentUserId);
 
                 if (user != null)
                 {
                     // بررسی آیا قبلاً اضافه شده
                     bool alreadyAdded = context.UserContacts
-                        .Any(uc => uc.UserId == (int)Session["UserId"] && uc.ContactUserId == user.Id);
+                        .Any(uc => uc.UserId == currentUserId && uc.ContactUserId == user.Id);
 
                     string resultHtml = $@"
                 <div class='alert alert-info'>
@@ -231,11 +232,11 @@ namespace Connecta.Contacts
                     ViewState["FoundUserId"] = user.Id;
                     ViewState["FoundUserName"] = user.FullName;
 
-                   // searchResults.InnerHtml = resultHtml;
+                    searchResults.InnerHtml = resultHtml;
                 }
                 else
                 {
-                    //searchResults.InnerHtml = "<div class='alert alert-warning'>کاربری با این شماره تلفن در سیستم یافت نشد</div>";
+                    searchResults.InnerHtml = "<div class='alert alert-warning'>کاربری با این شماره تلفن در سیستم یافت نشد</div>";
                 }
             }
         }

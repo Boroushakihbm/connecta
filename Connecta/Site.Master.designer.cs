@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Connecta
-{
-
-
-    public partial class Site
-    {
-
+namespace Connecta {
+    
+    
+    public partial class Site {
+        
         /// <summary>
         /// btnLogout control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace Connecta
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnLogout;
-
+        
         /// <summary>
         /// MainContent control.
         /// </summary>

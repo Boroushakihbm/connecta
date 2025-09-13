@@ -1,0 +1,17 @@
+﻿@font-face {
+    font-family: 'Vazir';
+    src: url('../font/vazir-font-v16.1.0/Vazir-Light.woff2');
+    src: url('../font/vazir-font-v16.1.0/Vazir-Light.eot.eot?#iefix') format('embedded-opentype'), url('../font/vazir-font-v16.1.0/Vazir-Light.woff2') format('woff2'), url('../font/vazir-font-v16.1.0/Vazir-Light.woff') format('woff'), url('../font/vazir-font-v16.1.0/Vazir-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    font-weight: bold;
+}

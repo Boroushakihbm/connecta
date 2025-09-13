@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-4">
         <h2>مخاطبین من</h2>
-        
+
         <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group">
@@ -17,28 +17,31 @@
             </div>
         </div>
 
-<div class="row mb-3">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header">
-                <h5>جستجوی کاربران سیستم</h5>
-            </div>
-            <div class="card-body">
-                <div class="input-group">
-                    <asp:TextBox ID="txtSearchPhone" runat="server" CssClass="form-control" placeholder="شماره تلفن کاربر"></asp:TextBox>
-                    <asp:Button ID="btnSearchPhone" runat="server" Text="جستجو" CssClass="btn btn-outline-primary" OnClick="btnSearchPhone_Click" />
-                </div>
-                <div id="searchResults" class="mt-3">
-                    <!-- نتایج جستجو在这里 نمایش داده می‌شود -->
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>جستجوی کاربران سیستم</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <asp:TextBox ID="txtSearchPhone" runat="server" CssClass="form-control" placeholder="شماره تلفن کاربر"></asp:TextBox>
+                            <asp:Button ID="btnSearchPhone" runat="server" Text="جستجو" CssClass="btn btn-outline-primary" OnClick="btnSearchPhone_Click" />
+                        </div>
+                        <div id="searchResults" runat="server" class="mt-3">
+                            <!-- نتایج جستجو نمایش داده می‌شود -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
         <div class="alert alert-info" runat="server" id="limitAlert" visible="false">
-            شما <asp:Literal ID="litContactCount" runat="server"></asp:Literal> از 
-            <asp:Literal ID="litContactLimit" runat="server"></asp:Literal> مخاطب مجاز را استفاده کرده‌اید.
+            شما
+            <asp:Literal ID="litContactCount" runat="server"></asp:Literal>
+            از 
+            <asp:Literal ID="litContactLimit" runat="server"></asp:Literal>
+            مخاطب مجاز را استفاده کرده‌اید.
         </div>
         
         <asp:GridView ID="gvContacts" runat="server" CssClass="table table-striped table-bordered" AutoGenerateColumns="False"
@@ -53,7 +56,7 @@
                         <asp:TextBox ID="txtFirstName" runat="server" Text='<%# Bind("FirstName") %>' CssClass="form-control"></asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
-                
+
                 <asp:TemplateField HeaderText="نام خانوادگی">
                     <ItemTemplate>
                         <asp:Label ID="lblLastName" runat="server" Text='<%# Eval("LastName") %>'></asp:Label>
@@ -62,7 +65,7 @@
                         <asp:TextBox ID="txtLastName" runat="server" Text='<%# Bind("LastName") %>' CssClass="form-control"></asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
-                
+
                 <asp:TemplateField HeaderText="شماره تلفن">
                     <ItemTemplate>
                         <asp:Label ID="lblPhoneNumber" runat="server" Text='<%# Eval("PhoneNumber") %>'></asp:Label>
@@ -71,7 +74,7 @@
                         <asp:TextBox ID="txtPhoneNumber" runat="server" Text='<%# Bind("PhoneNumber") %>' CssClass="form-control"></asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
-                
+
                 <asp:TemplateField HeaderText="ایمیل">
                     <ItemTemplate>
                         <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
@@ -80,15 +83,15 @@
                         <asp:TextBox ID="txtEmail" runat="server" Text='<%# Bind("Email") %>' CssClass="form-control"></asp:TextBox>
                     </EditItemTemplate>
                 </asp:TemplateField>
-                
-                <asp:CommandField ShowEditButton="True" ButtonType="Button" EditText="ویرایش" 
+
+                <asp:CommandField ShowEditButton="True" ButtonType="Button" EditText="ویرایش"
                     UpdateText="ذخیره" CancelText="انصراف" ShowDeleteButton="True" DeleteText="حذف" />
             </Columns>
             <EmptyDataTemplate>
                 <div class="alert alert-warning">هیچ مخاطبی یافت نشد.</div>
             </EmptyDataTemplate>
         </asp:GridView>
-        
+
         <!-- Modal برای افزودن مخاطب جدید -->
         <div class="modal fade" id="addContactModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">
@@ -123,7 +126,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <script>
         function openAddModal() {

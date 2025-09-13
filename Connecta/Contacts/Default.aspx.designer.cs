@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Connecta.Contacts
-{
-
-
-    public partial class Default
-    {
-
+namespace Connecta.Contacts {
+    
+    
+    public partial class Default {
+        
         /// <summary>
         /// txtSearch control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
-
+        
         /// <summary>
         /// btnSearch control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
-
+        
         /// <summary>
         /// txtSearchPhone control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSearchPhone;
-
+        
         /// <summary>
         /// btnSearchPhone control.
         /// </summary>
@@ -49,7 +47,16 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchPhone;
-
+        
+        /// <summary>
+        /// searchResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl searchResults;
+        
         /// <summary>
         /// limitAlert control.
         /// </summary>
@@ -58,7 +65,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl limitAlert;
-
+        
         /// <summary>
         /// litContactCount control.
         /// </summary>
@@ -67,7 +74,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litContactCount;
-
+        
         /// <summary>
         /// litContactLimit control.
         /// </summary>
@@ -76,7 +83,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litContactLimit;
-
+        
         /// <summary>
         /// gvContacts control.
         /// </summary>
@@ -85,7 +92,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvContacts;
-
+        
         /// <summary>
         /// txtNewFirstName control.
         /// </summary>
@@ -94,7 +101,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewFirstName;
-
+        
         /// <summary>
         /// txtNewLastName control.
         /// </summary>
@@ -103,7 +110,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewLastName;
-
+        
         /// <summary>
         /// txtNewPhone control.
         /// </summary>
@@ -112,7 +119,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewPhone;
-
+        
         /// <summary>
         /// txtNewEmail control.
         /// </summary>
@@ -121,7 +128,7 @@ namespace Connecta.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNewEmail;
-
+        
         /// <summary>
         /// btnSaveContact control.
         /// </summary>

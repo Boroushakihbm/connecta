@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Connecta</RootNamespace>
     <AssemblyName>Connecta</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44388</IISExpressSSLPort>
@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -178,6 +179,7 @@
     <Reference Include="System.Buffers, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.6.0\lib\net462\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.SqlClient, Version=4.6.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SqlClient.4.9.0\lib\net462\System.Data.SqlClient.dll</HintPath>
     </Reference>
@@ -219,19 +221,17 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
@@ -247,20 +247,65 @@
     <Content Include="Contacts\Default.aspx" />
     <Content Include="Content\css\bootstrap.rtl.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\connecta.css" />
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\chart.js" />
     <Content Include="Content\js\jquery-3.7.1.min.js" />
     <Content Include="Content\js\jquery.signalR.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Login.aspx" />
+    <Content Include="UserPages\Login.aspx" />
+    <Content Include="Content\font\vazir-font-v16.1.0\CHANGELOG.md" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Bold-FD-WOL.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Bold-FD-WOL.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Bold-FD-WOL.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Bold-FD-WOL.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-FD-WOL.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-FD-WOL.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-FD-WOL.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-FD-WOL.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Light-FD-WOL.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Light-FD-WOL.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Light-FD-WOL.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Light-FD-WOL.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Medium-FD-WOL.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Medium-FD-WOL.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Medium-FD-WOL.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Medium-FD-WOL.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Thin-FD-WOL.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Thin-FD-WOL.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Thin-FD-WOL.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Farsi-Digits-Without-Latin\Vazir-Thin-FD-WOL.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\LICENSE" />
+    <Content Include="Content\font\vazir-font-v16.1.0\README.md" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Bold.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Bold.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Bold.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Bold.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Light.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Light.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Light.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Light.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Medium.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Medium.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Medium.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Medium.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Thin.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Thin.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Thin.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir-Thin.woff2" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir.eot" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir.ttf" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir.woff" />
+    <Content Include="Content\font\vazir-font-v16.1.0\Vazir.woff2" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
-    <Content Include="Readme.txt" />
-    <Content Include="Register.aspx" />
     <Content Include="Scripts\jquery-1.6.4.js" />
     <Content Include="Scripts\jquery-1.6.4.min.js" />
     <Content Include="Scripts\jquery.signalR-2.4.3.js" />
     <Content Include="Scripts\jquery.signalR-2.4.3.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="UserPages\Register.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Dashboard.aspx.cs">
@@ -288,11 +333,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="UserPages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
+    <Compile Include="UserPages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Connecta\202509122106042_Init.cs" />
@@ -309,13 +354,6 @@
     <Compile Include="Models\UserContact.cs" />
     <Compile Include="Models\UserPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -324,6 +362,13 @@
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UserPages\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

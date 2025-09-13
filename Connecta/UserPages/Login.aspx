@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Connecta.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Connecta.UserPages.Login" %>
 
 <!DOCTYPE html>
 <html lang="fa">
@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ورود به سیستم</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-
+    <link href="../Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../Content/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="../Content/css/connecta.css" rel="stylesheet" />
     <style>
         body {
             background-color: #f5f5f5;
@@ -28,7 +28,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="login-container">
-            <h2 class="text-center mb-4">ورود به دفتر تلفن</h2>
+            <h2 class="text-center mb-4">ورود به کانکتا</h2>
 
             <div class="mb-3">
                 <label for="txtUsername" class="form-label">نام کاربری</label>
@@ -54,7 +54,8 @@
             </div>
         </div>
     </form>
+
+    <script src="../Content/js/bootstrap.bundle.min.js"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

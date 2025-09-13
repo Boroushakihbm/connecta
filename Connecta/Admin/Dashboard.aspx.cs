@@ -15,7 +15,7 @@ namespace Connecta.Admin
         {
             if (Session["IsAdmin"] == null || !(bool)Session["IsAdmin"])
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/UserPages/Login.aspx");
             }
 
             if (!IsPostBack)
@@ -52,15 +52,14 @@ namespace Connecta.Admin
 
                 litTotalUsers.Text = TotalUsersCount.ToString();
                 litTotalContacts.Text = totalContacts.ToString();
-                litActiveUsers.Text = TotalUsersCount.ToString(); // در این نسخه ساده، همه کاربران فعال در نظر گرفته می‌شوند
+                litActiveUsers.Text = TotalUsersCount.ToString(); 
                 litAdminUsers.Text = AdminUsersCount.ToString();
             }
         }
 
         protected void btnAddUser_Click(object sender, EventArgs e)
         {
-            // در این نسخه، افزودن کاربر از طریق seed data انجام می‌شود
-            // می‌توانید این بخش را扩展 دهید
+
         }
 
         protected void gvUsers_RowEditing(object sender, GridViewEditEventArgs e)

@@ -5,31 +5,31 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - دفتر تلفن من</title>
-    
+    <title><%: Page.Title %> - کانکتا</title>
+
     <asp:PlaceHolder runat="server">
-        <%--<%: Scripts.Render("~/bundles/modernizr") %>--%>
+       
     </asp:PlaceHolder>
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/bootstrap.rtl.min.css" rel="stylesheet" />
-    
-    <%--<webopt:BundleReference runat="server" Path="~/Content/css/" />--%>
+    <link href="~/Content/css/connecta.css" rel="stylesheet" />
+
+    <webopt:BundleReference runat="server" Path="~/Content/css/" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    
+
     <style>
         body {
-            padding-top: 50px;
             padding-bottom: 20px;
             direction: rtl;
             text-align: right;
         }
-        
+
         .navbar-right {
             float: left !important;
             margin-left: 15px;
             margin-right: 0;
         }
-        
+
         .footer {
             position: fixed;
             bottom: 0;
@@ -39,37 +39,40 @@
             background-color: #f5f5f5;
             text-align: center;
         }
+
+        .navbar-nav.rtl {
+            margin-left: auto !important;
+            margin-right: 0 !important;
+        }
     </style>
 </head>
 <body>
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
-                 <asp:ScriptReference  Path="~/Content/js/jquery-3.7.1.min.js" />
-                <asp:ScriptReference Path="~/Content/js/bootstrap.bundle.min.js"/>
+                <asp:ScriptReference Path="~/Content/js/jquery-3.7.1.min.js" />
+                <asp:ScriptReference Path="~/Content/js/bootstrap.bundle.min.js" />
             </Scripts>
         </asp:ScriptManager>
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">دفتر تلفن</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse align-items-start">
+                    <ul class="navbar-nav rtl">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contacts/Default.aspx">مخاطبین</a></li>
                         <asp:PlaceHolder runat="server" Visible='<%# Session["IsAdmin"] != null && (bool)Session["IsAdmin"] %>'>
                             <li class="nav-item"><a class="nav-link" runat="server" href="~/Admin/Dashboard.aspx">پنل مدیریت</a></li>
                             <li class="nav-item"><a class="nav-link" runat="server" href="~/Chat.aspx">چت</a></li>
                         </asp:PlaceHolder>
+                        <li class="nav-item"><a class="nav-link" runat="server">خوش آمدی، <%: Session["Username"] %></a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
+
+                    <ul class="nav navbar-nav">
                         <asp:PlaceHolder runat="server" Visible='<%# Session["Username"] != null %>'>
-                            <li class="nav-item">
-                                <span class="navbar-text">خوش آمدید، <%: Session["Username"] %></span>
-                            </li>
                             <li class="nav-item">
                                 <asp:Button ID="btnLogout" runat="server" Text="خروج" CssClass="btn btn-link navbar-btn navbar-link" OnClick="btnLogout_Click" />
                             </li>
@@ -83,12 +86,12 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer class="footer">
-                <p>&copy; <%: DateTime.Now.Year %> - دفتر تلفن من</p>
-            </footer>
+
         </div>
     </form>
+    <footer class="footer">
+        <p>&copy; <%: DateTime.Now.Year %> - کانکتا</p>
+    </footer>
     <script src="~/Content/js/jquery-3.7.1.min.js"></script>
-    <%--<script src="~/Content/js/jquery.signalR-2.4.3.min.js"></script>--%>
 </body>
 </html>
