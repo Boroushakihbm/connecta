@@ -52,7 +52,7 @@ namespace Connecta.Admin
 
                 litTotalUsers.Text = TotalUsersCount.ToString();
                 litTotalContacts.Text = totalContacts.ToString();
-                litActiveUsers.Text = TotalUsersCount.ToString(); 
+                litActiveUsers.Text = Application["OnlineUsers"].ToString(); 
                 litAdminUsers.Text = AdminUsersCount.ToString();
             }
         }

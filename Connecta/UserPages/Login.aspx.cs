@@ -47,6 +47,10 @@ namespace Connecta.UserPages
                     Session["Username"] = user.Username;
                     Session["IsAdmin"] = user.IsAdmin;
 
+                    Application.Lock();
+                    Application["OnlineUsers"] = ((int)Application["OnlineUsers"]) + 1;
+                    Application.UnLock();
+
                     Response.Redirect(user.IsAdmin ? "~/Admin/Dashboard.aspx" : "~/Contacts/Default.aspx");
                 }
                 else

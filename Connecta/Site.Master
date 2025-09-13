@@ -14,7 +14,6 @@
     <link href="~/Content/css/bootstrap.rtl.min.css" rel="stylesheet" />
     <link href="~/Content/css/connecta.css" rel="stylesheet" />
 
-    <webopt:BundleReference runat="server" Path="~/Content/css/" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <style>
@@ -44,17 +43,18 @@
             margin-left: auto !important;
             margin-right: 0 !important;
         }
+
+        .setleft {
+            justify-content:flex-end !important;
+        }
     </style>
+
+
+        <script src="../Content/js/bootstrap.bundle.min.js"></script>
+    <script src="../Content/js/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <form runat="server">
-        <asp:ScriptManager runat="server">
-            <Scripts>
-                <asp:ScriptReference Path="~/Content/js/jquery-3.7.1.min.js" />
-                <asp:ScriptReference Path="~/Content/js/bootstrap.bundle.min.js" />
-            </Scripts>
-        </asp:ScriptManager>
-
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
             <div class="container">
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -92,6 +92,6 @@
     <footer class="footer">
         <p>&copy; <%: DateTime.Now.Year %> - کانکتا</p>
     </footer>
-    <script src="~/Content/js/jquery-3.7.1.min.js"></script>
+
 </body>
 </html>

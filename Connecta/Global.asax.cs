@@ -11,10 +11,10 @@ namespace Connecta
     {
         protected void Application_Start(object sender, EventArgs e)
         {
-            // این خط باعث می‌شود مایگریشن‌ها اجرا شوند و سپس Seed اجرا شود.
+            Application["OnlineUsers"] = 0;
+
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<PhoneBookContext, Configuration>());
 
-            //Force initialization so we can see errors now
             using (var ctx = new PhoneBookContext())
             {
                 ctx.Database.Initialize(false);
@@ -23,14 +23,25 @@ namespace Connecta
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            // Code that runs when an unhandled error occurs
             Exception exc = Server.GetLastError();
 
             if (exc is HttpUnhandledException)
             {
-                // Pass the error on to the error page.
                 Server.Transfer("ErrorPage.aspx?handler=Application_Error%20-%20Global.asax", true);
             }
         }
+
+        protected void Session_Start(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Session_End(object sender, EventArgs e)
+        {
+            Application.Lock();
+            Application["OnlineUsers"] = ((int)Application["OnlineUsers"]) - 1;
+            Application.UnLock();
+        }
+
     }
 }
