@@ -1,6 +1,5 @@
 ﻿using Connecta.Migrations.Connecta;
 using Connecta.Models;
-using Microsoft.Owin;
 using System;
 using System.Data.Entity;
 using System.Web;
