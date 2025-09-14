@@ -13,7 +13,7 @@ namespace Connecta.Migrations.Connecta
         
         string IMigrationMetadata.Id
         {
-            get { return "202509122106042_Init"; }
+            get { return "202509140449051_Init"; }
         }
         
         string IMigrationMetadata.Source

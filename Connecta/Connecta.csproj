@@ -333,16 +333,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Migrations\Connecta\202509140449051_Init.cs" />
+    <Compile Include="Migrations\Connecta\202509140449051_Init.designer.cs">
+      <DependentUpon>202509140449051_Init.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserPages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Connecta\202509122106042_Init.cs" />
-    <Compile Include="Migrations\Connecta\202509122106042_Init.Designer.cs">
-      <DependentUpon>202509122106042_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Connecta\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -352,7 +352,6 @@
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserContact.cs" />
-    <Compile Include="Models\UserPlan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -384,8 +383,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\Connecta\202509122106042_Init.resx">
-      <DependentUpon>202509122106042_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\Connecta\202509140449051_Init.resx">
+      <DependentUpon>202509140449051_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -90,18 +90,6 @@
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.UserPlans",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
-                        Price = c.Int(nullable: false),
-                        ContactLimit = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
         }
         
         public override void Down()
@@ -116,7 +104,6 @@
             DropIndex("dbo.Messages", new[] { "ReceiverId" });
             DropIndex("dbo.Messages", new[] { "SenderId" });
             DropIndex("dbo.Contacts", new[] { "UserId" });
-            DropTable("dbo.UserPlans");
             DropTable("dbo.Plans");
             DropTable("dbo.UserContacts");
             DropTable("dbo.Messages");

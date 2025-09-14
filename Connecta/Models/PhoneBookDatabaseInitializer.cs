@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Numerics;
-using System.Reflection.Emit;
+using System.Linq;
 
 namespace Connecta.Models
 {
-    public class PhoneBookDatabaseInitializer : DropCreateDatabaseIfModelChanges<PhoneBookContext>
+    public class PhoneBookDatabaseInitializer 
     {
-        protected override void Seed(PhoneBookContext context)
+        public static void Seed(PhoneBookContext context)
         {
+            if (context.Users.Where(x => x.Username == "admin").Count() > 0) return;
+
             // در متد Seed
             // ایجاد کاربران نمونه با شماره تلفن
             var sampleUsers = new[]
@@ -51,6 +51,7 @@ namespace Connecta.Models
             foreach (var user in sampleUsers)
             {
                 context.Users.Add(user);
+                context.SaveChanges();
             }
 
             // ایجاد مخاطبین نمونه
@@ -79,10 +80,13 @@ namespace Connecta.Models
                 }
             };
 
+
             foreach (var contact in sampleContacts)
             {
                 context.Contacts.Add(contact);
+                context.SaveChanges();
             }
+
 
             // ایجاد طرح‌های پیش‌فرض
             var basicPlan = new Plan
@@ -115,8 +119,40 @@ namespace Connecta.Models
             context.Plans.Add(basicPlan);
             context.Plans.Add(premiumPlan);
             context.Plans.Add(unlimitedPlan);
-
             context.SaveChanges();
+
+
+            // ایجاد چند پیام نمونه
+            var sampleMessages = new[]
+            {
+                new Message {
+                    Content = "سلام، چطوری؟",
+                    Timestamp = DateTime.Now.AddHours(-2),
+                    SenderId = 2,
+                    ReceiverId = 1,
+                    IsRead = true
+                },
+                new Message {
+                    Content = "سلام، خوبم. تو چطوری؟",
+                    Timestamp = DateTime.Now.AddHours(-1),
+                    SenderId = 1,
+                    ReceiverId = 2,
+                    IsRead = true
+                },
+                new Message {
+                    Content = "ممنون، من هم خوبم. پروژه جدیدت چطور پیش میره؟",
+                    Timestamp = DateTime.Now.AddMinutes(-30),
+                    SenderId = 2,
+                    ReceiverId = 1,
+                    IsRead = false
+                }
+            };
+
+            foreach (var message in sampleMessages)
+            {
+                context.Messages.Add(message);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -44,7 +44,6 @@ namespace Connecta.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Plan> Plans { get; set; }
-        public DbSet<UserPlan> UserPlans { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<UserContact> UserContacts { get; set; }
 
